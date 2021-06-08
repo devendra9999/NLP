@@ -1,0 +1,1849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<process name="Utility - Blue Prism Process Info" version="1.0" bpversion="6.9.0.26970" narrative="A utility object for retrieving basic information about processes defined in the Blue Prism environment.&#xD;&#xA;&#xD;&#xA;Version: 2.6" byrefcollection="true" type="object" runmode="Background" preferredid="2c5f1e5f-fbbe-447a-acc7-5e852c13a169">
+  <appdef>
+    <element name="Application Root">
+      <id>0e662129-da1e-4e51-aabc-c87d25cf8e68</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions>
+    <condition narrative="This object requires the Blue Prism SQL Server utility object." />
+  </preconditions>
+  <endpoint narrative="" />
+  <subsheet subsheetid="beac347c-a366-4320-afbf-2282b541ff89" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="998ca273-f273-4e9c-82b1-aae8ebea6f68" type="Normal" published="True">
+    <name>Set Connection Details</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>21</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="64f05c58-9310-49c4-9718-dc5e8c8a2699" type="Normal" published="True">
+    <name>Get Processes</name>
+    <view>
+      <camerax>27</camerax>
+      <cameray>164</cameray>
+      <zoom version="2">1.875</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="052068ef-768b-4e0d-ae03-a200ca01533b" type="Normal" published="True">
+    <name>Get Process Parameters</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>63</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="4dcf98e3-415a-4731-aa76-527973175466" type="Normal" published="True">
+    <name>Get Session Output</name>
+    <view>
+      <camerax>27</camerax>
+      <cameray>-21</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="0106fe52-e84d-4777-aa3e-a1c255f25c01" type="Normal" published="False">
+    <name>#Get Parameters from Process XML</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>81</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="77b461f2-21fc-410d-b036-a7215be12186" name="Start" type="Start">
+    <loginhibit />
+    <onsuccess>e793ad23-6f1f-460f-8672-17b4e0696ace</onsuccess>
+    <displayx>15</displayx>
+    <displayy>-105</displayy>
+  </stage>
+  <stage stageid="e793ad23-6f1f-460f-8672-17b4e0696ace" name="End" type="End">
+    <loginhibit />
+    <displayx>15</displayx>
+    <displayy>90</displayy>
+  </stage>
+  <stage stageid="f9ba2f16-7b9d-441c-b076-4d79a23ff06b" name="Stage1" type="ProcessInfo">
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>csharp</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+    <displayx>-180</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="40583f97-cd6f-4ea8-8cf3-f2884363d19f" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>beac347c-a366-4320-afbf-2282b541ff89</subsheetid>
+    <displayx>-180</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="aed8d7d8-7be5-489c-85ac-349912881e51" name="Start" type="Start">
+    <subsheetid>beac347c-a366-4320-afbf-2282b541ff89</subsheetid>
+    <loginhibit />
+    <onsuccess>fdaf4541-4c17-4772-a130-dec31ae2b6ef</onsuccess>
+    <displayx>15</displayx>
+    <displayy>-105</displayy>
+  </stage>
+  <stage stageid="fdaf4541-4c17-4772-a130-dec31ae2b6ef" name="End" type="End">
+    <subsheetid>beac347c-a366-4320-afbf-2282b541ff89</subsheetid>
+    <loginhibit />
+    <displayx>15</displayx>
+    <displayy>90</displayy>
+  </stage>
+  <stage stageid="8522e827-71f1-4a9a-9a63-987d43988dfd" name="Get Processes" type="SubSheetInfo">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <narrative>Method for getting the names and descriptions of all processes defined in the Bue Prism system.</narrative>
+    <displayx>-195</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="5634b818-03c1-47f1-98f9-87139fe9b709" name="Start" type="Start">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <preconditions>
+      <condition narrative="A successful call to the 'Set Connection Details' method." />
+    </preconditions>
+    <inputs>
+      <input type="flag" name="Include Objects" narrative="Flag indicating whether objects should be included in the set of results. If True, objects will be included. Default value: False" stage="Include Objects" />
+    </inputs>
+    <onsuccess>e044b73c-1342-48da-a606-b3334954c08c</onsuccess>
+    <displayx>45</displayx>
+    <displayy>-105</displayy>
+  </stage>
+  <stage stageid="3b824160-3b73-4b72-af30-5b4c31d447d1" name="End" type="End">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <outputs>
+      <output type="flag" name="Success" narrative="A flag indicating the success or failure of the method." stage="Success" />
+      <output type="collection" name="Processes" narrative="A collection of names and descriptions for all processes defined in the Blue Prism system." stage="Processes" />
+    </outputs>
+    <displayx>45</displayx>
+    <displayy>450</displayy>
+  </stage>
+  <stage stageid="7a89c364-4a13-4ba1-a5e3-9f294af84fe6" name="Note1" type="Note">
+    <subsheetid>beac347c-a366-4320-afbf-2282b541ff89</subsheetid>
+    <narrative>Clean Up Page
+
+This is an optional page where you might choose to perform some finalisation (or "cleanup") tasks as your business object is closed down.
+
+The cleanup action will be called automatically immediately after closing your business object at the end of a business process.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than before the disposal of the business object.</narrative>
+    <displayx>-180</displayx>
+    <displayy>60</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>230</displayheight>
+  </stage>
+  <stage stageid="e800b9ff-2ba8-4bd7-8a1e-ec78073851bb" name="Note2" type="Note">
+    <narrative>Initialise Page
+
+This is an optional page where you might choose to perform some initialisation tasks after your business object is loaded.
+
+The initialise action will be called automatically immediately after loading your business object.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than after the creation of the object.</narrative>
+    <displayx>-180</displayx>
+    <displayy>60</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>230</displayheight>
+  </stage>
+  <stage stageid="22368c4b-bdcc-4cad-ab09-e8703e011b3d" name="Set Connection Details" type="SubSheetInfo">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <narrative>Use this method to set the database hostname, database name, and user credentials for connecting to the Blue Prism database.</narrative>
+    <displayx>-195</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="1569e17a-1c7d-4afb-8eca-763797a958ad" name="Start" type="Start">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <inputs>
+      <input type="text" name="Database Server" narrative="The hostname and SQL instance of the Blue Prism SQL Server (ex.LOCALHOST\SQLEXPRESS)." stage="DB Server" />
+      <input type="text" name="Database Name" narrative="The name of the Blue Prism database within the SQL Server instance." stage="DB Name" />
+      <input type="text" name="Database Credential Name" narrative="The name of the user credential defined in Credential Manager with access rights on the Blue Prism database." stage="DB Credential Name" />
+    </inputs>
+    <onsuccess>3d0c2771-d61b-4baf-94dc-f377b9d3df7f</onsuccess>
+    <displayx>15</displayx>
+    <displayy>-105</displayy>
+  </stage>
+  <stage stageid="ef3d4c3c-f527-4874-aa36-beb194f04d8a" name="End" type="End">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <outputs>
+      <output type="flag" name="Success" narrative="Flag indicating success or failure of the method." stage="Success" />
+    </outputs>
+    <displayx>15</displayx>
+    <displayy>180</displayy>
+  </stage>
+  <stage stageid="a9269e81-62ac-4daf-a700-7e2010ff8d9c" name="DB Server" type="Data">
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue />
+    <alwaysinit />
+    <displayx>180</displayx>
+    <displayy>-120</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="0f3cfc5c-fd33-4056-95a8-6eb953c5f7b3" name="DB Name" type="Data">
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue />
+    <alwaysinit />
+    <displayx>180</displayx>
+    <displayy>-90</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="293d3eed-c8c2-438d-8ce9-2fabecef45d1" name="DB Credential Name" type="Data">
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue />
+    <alwaysinit />
+    <displayx>180</displayx>
+    <displayy>-60</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="f98e8ad0-bb8d-4f52-82ba-0469ff619b49" name="Global Variables" type="Block">
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>90</displayx>
+    <displayy>-150</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>150</displayheight>
+  </stage>
+  <stage stageid="284520a5-2d7a-4466-bf07-e4984c04f226" name="Data - SQL Server::Configure" type="Action">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="flag" name="Raise exception on any failure" friendlyname="Raise exception on any failure" narrative="Flag indicating if failure should cause an exception to be raised rather than a return of a success output value" expr="True" />
+    </inputs>
+    <onsuccess>bf3b343a-8ac9-44f6-8339-f158d0c0394d</onsuccess>
+    <resource object="Data - SQL Server" action="Configure" />
+    <displayx>15</displayx>
+    <displayy>30</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="bf3b343a-8ac9-44f6-8339-f158d0c0394d" name="Data - SQL Server::Set Connection" type="Action">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="Server" friendlyname="Server" narrative="The name of the server and, if necessary, instance name of the SQL Server instance to connect to" expr="[DB Server]" />
+      <input type="text" name="Database" friendlyname="Database" narrative="The name of the database to connect to" expr="[DB Name]" />
+      <input type="text" name="User" friendlyname="User" narrative="If appropriate, the login name to use to connect to SQL Server. If left empty, windows authentication using the current user will be used instead of SQL Server authentication" expr="[Username]" />
+      <input type="password" name="Password" friendlyname="Password" narrative="If appropriate, the password to use with the above login name to access SQL Server. Unused for windows authentication" expr="[Password]" />
+    </inputs>
+    <onsuccess>7d48e937-f8ce-4e4e-b39c-632d5468a3f8</onsuccess>
+    <resource object="Data - SQL Server" action="Set Connection" />
+    <displayx>15</displayx>
+    <displayy>75</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="3d0c2771-d61b-4baf-94dc-f377b9d3df7f" name="Credentials::Get" type="Action">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit onsuccess="true" />
+    <narrative>Get the specified set of credentials.
+
+An Exception will occur if access to the credentials is not allowed, based on the running Resource, Process and User.</narrative>
+    <inputs>
+      <input type="text" name="Credentials Name" friendlyname="Credentials Name" narrative="The name of the credentials to get" expr="[DB Credential Name]" />
+    </inputs>
+    <outputs>
+      <output type="password" name="Password" friendlyname="Password" narrative="The password" stage="Password" />
+      <output type="text" name="Username" friendlyname="Username" narrative="The user name" stage="Username" />
+      <output type="date" name="Expiry Date" friendlyname="Expiry Date" narrative="The expiry date" stage="Expiry Date" />
+      <output type="text" name="Status" friendlyname="Status" narrative="The status" stage="Status" />
+    </outputs>
+    <onsuccess>284520a5-2d7a-4466-bf07-e4984c04f226</onsuccess>
+    <resource object="Blueprism.Automate.clsCredentialsActions" action="Get" />
+    <displayx>15</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="5ae3181a-0b4f-42c8-a954-99c022914871" name="Password" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <datatype>password</datatype>
+    <initialvalueenc></initialvalueenc>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="33ebc1cc-a640-4f79-b818-bfa9d80c9de7" name="Username" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="6dbc5aa2-383d-4256-a364-943e95dba219" name="Expiry Date" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <datatype>date</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>75</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="dea7b707-ad1f-4492-9749-52a56022589b" name="Status" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>45</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="8b0cc83f-e167-4b0f-81a9-81e3d09f3bd4" name="Connection Details Set" type="Data">
+    <loginhibit />
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <alwaysinit />
+    <displayx>180</displayx>
+    <displayy>-30</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="420ba3dd-0181-4bc7-b37b-f10f7a644865" name="Block1" type="Block">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-60</displayx>
+    <displayy>-75</displayy>
+    <displaywidth>255</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="b00c8d1a-a62c-4fce-85d2-4d2ae93a2289" name="Block2" type="Block">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-60</displayx>
+    <displayy>0</displayy>
+    <displaywidth>255</displaywidth>
+    <displayheight>105</displayheight>
+  </stage>
+  <stage stageid="70b4cb78-e7d6-4e6f-81d8-d8c860bf6b1f" name="Exception Detail" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>135</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="e4d19337-1c62-4655-a626-4597bd0f3cd5" name="Recover1" type="Recover">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>b37d68d1-c144-473c-a237-691eb019ce7e</onsuccess>
+    <displayx>150</displayx>
+    <displayy>-45</displayy>
+  </stage>
+  <stage stageid="00fe3d14-06f3-453a-a2d8-33d6b5e6b7a2" name="Recover2" type="Recover">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>25ee2ced-e7ca-4725-9242-8f4f7566d813</onsuccess>
+    <displayx>150</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="b37d68d1-c144-473c-a237-691eb019ce7e" name="Set Credential Exception Detail" type="Calculation">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>d2b69ff1-875c-48ca-8243-bfd1e7c5b9b2</onsuccess>
+    <calculation expression="&quot;The following exception was encountered while trying to retrieve the database credential from the Credential Manager: &quot; &amp; ExceptionDetail()" stage="Exception Detail" />
+    <displayx>255</displayx>
+    <displayy>-45</displayy>
+  </stage>
+  <stage stageid="25ee2ced-e7ca-4725-9242-8f4f7566d813" name="Set DB Exception Detail" type="Calculation">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>7d6946ce-b6a6-4d46-a53e-7fdd5fa59b3d</onsuccess>
+    <calculation expression="&quot;The following exception was encountered while trying to configure the database connection: &quot; &amp; ExceptionDetail()&#xA;" stage="Exception Detail" />
+    <displayx>255</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="d2b69ff1-875c-48ca-8243-bfd1e7c5b9b2" name="Resume1" type="Resume">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>826d2cbc-3d9f-4be9-96df-99666815b300</onsuccess>
+    <displayx>345</displayx>
+    <displayy>-45</displayy>
+  </stage>
+  <stage stageid="7d6946ce-b6a6-4d46-a53e-7fdd5fa59b3d" name="Resume2" type="Resume">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>826d2cbc-3d9f-4be9-96df-99666815b300</onsuccess>
+    <displayx>345</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="826d2cbc-3d9f-4be9-96df-99666815b300" name="Action Exception" type="Exception">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <exception localized="yes" type="Action Failed" detail="[Exception Detail]" />
+    <displayx>435</displayx>
+    <displayy>0</displayy>
+  </stage>
+  <stage stageid="e4528274-0c49-4c46-8266-7a068da6453a" name="Local Variables" type="Block">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>210</displayheight>
+  </stage>
+  <stage stageid="2b56768a-cc7b-4c80-bece-39058a669514" name="Success" type="Data">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>105</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="7d48e937-f8ce-4e4e-b39c-632d5468a3f8" name="Set Flags" type="MultipleCalculation">
+    <subsheetid>998ca273-f273-4e9c-82b1-aae8ebea6f68</subsheetid>
+    <loginhibit />
+    <onsuccess>ef3d4c3c-f527-4874-aa36-beb194f04d8a</onsuccess>
+    <steps>
+      <calculation expression="True" stage="Connection Details Set" />
+      <calculation expression="True" stage="Success" />
+    </steps>
+    <displayx>15</displayx>
+    <displayy>135</displayy>
+  </stage>
+  <stage stageid="5c5f1e20-9236-4515-9350-162e8fd1c905" name="Query" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">SELECT 
+[name] AS Process_Name, 
+[description] AS Process_Description, 
+[AttributeID] AS Attribute_ID, 
+[wspublishname] AS WS_Name,
+CASE WHEN [ProcessType] = 'P' THEN 'Process' ELSE 'Object' END AS Type
+FROM [dbo].[BPAProcess]
+WHERE [ProcessType]='P'</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>60</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="b6c8bf90-b0be-422e-9c05-eaf966c8fee1" name="Local Variables" type="Block">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>30</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>210</displayheight>
+  </stage>
+  <stage stageid="3320d398-c705-4a2c-a6cb-eb2c6b339e3f" name="Get Process Info from DB" type="Action">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="SQL" friendlyname="SQL" narrative="The SQL query to use to perform this action" expr="[Query]" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+      <output type="collection" name="Results" friendlyname="Results" narrative="The collection of results from the query" stage="Results" />
+    </outputs>
+    <onsuccess>967e1be7-8d90-4159-8466-dfeb818fee52</onsuccess>
+    <resource object="Data - SQL Server" action="Get Collection" />
+    <displayx>15</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="b80bc3ba-e123-4d0c-9de6-c4bd31ea10aa" name="Success" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>120</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="05e644f6-9f51-47cb-999b-d5b2d564b324" name="Message" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>150</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="547f1f6b-d551-4190-8462-ee6ac878872a" name="Results" type="Collection">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>180</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="6666bb24-0b44-423e-9467-3fac207ca451" name="Block3" type="Block">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-30</displayx>
+    <displayy>15</displayy>
+    <displaywidth>225</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="8ddaa87f-727f-4364-ac7d-ae4d014fa46f" name="Recover3" type="Recover">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>1160e556-acf1-47f5-85c5-f9135e3c2dee</onsuccess>
+    <displayx>150</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="3556081d-c08d-4413-881b-5d1835129ee1" name="Exception Detail" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>210</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="1160e556-acf1-47f5-85c5-f9135e3c2dee" name="Set DB Exception Detail" type="Calculation">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>5c8c1125-c9a1-4131-9287-c5d2508f29c2</onsuccess>
+    <calculation expression="&quot;The following exception was encountered while trying to get the process names: &quot; &amp; ExceptionDetail()" stage="Exception Detail" />
+    <displayx>240</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="5c8c1125-c9a1-4131-9287-c5d2508f29c2" name="Resume3" type="Resume">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>e25b6618-2ff1-42da-8ce0-abee0ce0be4e</onsuccess>
+    <displayx>315</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="e25b6618-2ff1-42da-8ce0-abee0ce0be4e" name="Action Exception" type="Exception">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <exception localized="yes" type="Action Failed" detail="[Exception Detail]" />
+    <displayx>390</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="3a53fa4c-e355-4d23-9d06-e3f5679bb973" name="Get Process Parameters" type="SubSheetInfo">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <narrative>Use this method to retrieve a list of input and output parameters for a specific process.</narrative>
+    <displayx>-225</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="703190fb-2b1d-4dee-8604-1d351641dfba" name="Start" type="Start">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <preconditions>
+      <condition narrative="A successful call to 'Set Connection Details' must have been made before calling this method." />
+    </preconditions>
+    <inputs>
+      <input type="text" name="Process Name" narrative="The name of the Blue Prism process to retrieve parameter information for." stage="Process Name" />
+    </inputs>
+    <onsuccess>6d235380-e519-4303-ba58-67e2dd83721b</onsuccess>
+    <displayx>15</displayx>
+    <displayy>-90</displayy>
+  </stage>
+  <stage stageid="e044b73c-1342-48da-a606-b3334954c08c" name="Connection Details?" type="Decision">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <decision expression="[Connection Details Set] = True" />
+    <ontrue>5d513640-b6df-4a3e-8657-a5c0913d5ad4</ontrue>
+    <onfalse>1a0f0754-a712-461f-ba79-c24b109d1f08</onfalse>
+    <displayx>45</displayx>
+    <displayy>-60</displayy>
+  </stage>
+  <stage stageid="1a0f0754-a712-461f-ba79-c24b109d1f08" name="Anchor1" type="Anchor">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>46bab68c-d463-4411-a8b5-216692abffd2</onsuccess>
+    <displayx>-45</displayx>
+    <displayy>-60</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="46bab68c-d463-4411-a8b5-216692abffd2" name="Anchor2" type="Anchor">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>3b824160-3b73-4b72-af30-5b4c31d447d1</onsuccess>
+    <displayx>-45</displayx>
+    <displayy>450</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="0ae4f56c-23f2-4e17-9a5b-9ce3a89c1f18" name="End" type="End">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <outputs>
+      <output type="flag" name="Success" narrative="A flag indicating the success or failure of the method." stage="Success" />
+      <output type="collection" name="Process Parameters" narrative="A list of the parameters for the specified Blue Prism process." stage="Parameters" />
+    </outputs>
+    <displayx>15</displayx>
+    <displayy>240</displayy>
+  </stage>
+  <stage stageid="4aa677d7-2119-468a-bee2-652d6138dd7b" name="Query" type="Data">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">SELECT [processxml] AS Process_XML FROM [dbo].[BPAProcess] WHERE [name]=
+</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="0f3f47bc-3d1f-45b9-9f59-0deb6e8b95c3" name="Local Variables" type="Block">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-315</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>210</displayheight>
+  </stage>
+  <stage stageid="ef22dfc7-b416-403d-b495-499b29131578" name="Get Process XML from DB" type="Action">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="SQL" friendlyname="SQL" narrative="The SQL query to use to perform this action" expr="[Query] &amp; &quot;'&quot; &amp; [Process Name] &amp; &quot;'&quot;" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+      <output type="collection" name="Results" friendlyname="Results" narrative="The collection of results from the query" stage="Results" />
+    </outputs>
+    <onsuccess>9a47835f-4d2e-40ef-b8f8-4da06105e5c7</onsuccess>
+    <resource object="Data - SQL Server" action="Get Collection" />
+    <displayx>15</displayx>
+    <displayy>15</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="e8ae684a-641e-41bb-b6c5-f24c075864cc" name="Success" type="Data">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>45</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="d5e5a03d-c315-407f-8461-1953092f430a" name="Message" type="Data">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>75</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="58a6360a-12a8-40fe-a638-8a83bf778504" name="Results" type="Collection">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>105</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="a409eca1-dbfa-4064-9e3e-a72df0b4075f" name="Block3" type="Block">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-60</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>255</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="fab7e9e9-cedd-4663-9d32-2f9a215e6629" name="Recover3" type="Recover">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>af38ab67-0502-457d-9cb6-a221fefeb71b</onsuccess>
+    <displayx>150</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="ac0029fc-9d25-4d24-82cf-8f6f89ad5cac" name="Exception Detail" type="Data">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>135</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="af38ab67-0502-457d-9cb6-a221fefeb71b" name="Set DB Exception Detail" type="Calculation">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>e264e4cf-40ab-4ad3-a535-ff9f78795cbc</onsuccess>
+    <calculation expression="&quot;The following exception was encountered while trying to get the list of parameters for the process '&quot; &amp; [Process Name] &amp; &quot;': &quot; &amp; ExceptionDetail()" stage="Exception Detail" />
+    <displayx>255</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="e264e4cf-40ab-4ad3-a535-ff9f78795cbc" name="Resume3" type="Resume">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>5833a078-c3f6-455d-a1fb-c0eb15b26ff4</onsuccess>
+    <displayx>345</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="5833a078-c3f6-455d-a1fb-c0eb15b26ff4" name="Action Exception" type="Exception">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <exception localized="yes" type="Action Failed" detail="[Exception Detail]" />
+    <displayx>435</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="6d235380-e519-4303-ba58-67e2dd83721b" name="Connection Details?" type="Decision">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <decision expression="[Connection Details Set] = True" />
+    <ontrue>ef22dfc7-b416-403d-b495-499b29131578</ontrue>
+    <onfalse>a82b7a2d-4c6b-428d-91f2-8fa3172d5562</onfalse>
+    <displayx>15</displayx>
+    <displayy>-45</displayy>
+  </stage>
+  <stage stageid="a82b7a2d-4c6b-428d-91f2-8fa3172d5562" name="Anchor1" type="Anchor">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>c0b78f97-e96b-4639-a530-cd946d7c6469</onsuccess>
+    <displayx>-90</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="62e45399-6b5b-4764-9deb-670ff3c27127" name="Anchor2" type="Anchor">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>0ae4f56c-23f2-4e17-9a5b-9ce3a89c1f18</onsuccess>
+    <displayx>-90</displayx>
+    <displayy>240</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="2ce6a861-59f0-4d35-8da9-cfd746965e83" name="Process Name" type="Data">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-225</displayx>
+    <displayy>15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="eb2a46cd-5979-4fb3-ac19-c7329bdcf526" name="#Get Parameters from Process XML" type="SubSheetInfo">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <narrative>Helper method that parses the XML definition of a process to pull out any input/output parameters associated with the Main page of a process.</narrative>
+    <displayx>-195</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="91f0a0de-a215-46a8-a6d1-683bb6620c7b" name="Start" type="Start">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <inputs>
+      <input type="text" name="XML" narrative="The XML-encoded process definition." stage="Process XML" />
+    </inputs>
+    <onsuccess>521e30fa-405e-4364-a243-a060a007ae04</onsuccess>
+    <displayx>15</displayx>
+    <displayy>-120</displayy>
+  </stage>
+  <stage stageid="b56fe337-e7c1-41d1-a83b-1db545dd295c" name="Note3" type="Note">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <narrative>NOTE: This method is NOT intended to be exposed. It is only for internal use within this VBO.</narrative>
+    <font family="Segoe UI" size="10" style="Bold" color="FF0000" />
+    <displayx>15</displayx>
+    <displayy>-180</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="967e1be7-8d90-4159-8466-dfeb818fee52" name="Loop Start1" type="LoopStart">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>3ce521f1-0d87-4ae3-a614-70f05fc8dbc6</onsuccess>
+    <groupid>86b42f98-3e0b-4d57-9d74-5538edc87aad</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Results</loopdata>
+    <displayx>45</displayx>
+    <displayy>105</displayy>
+  </stage>
+  <stage stageid="b484ba86-8d99-4f51-a97f-8728283829c6" name="Loop End1" type="LoopEnd">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>4b029d57-a7c9-45f2-b0d8-2081fda870e0</onsuccess>
+    <groupid>86b42f98-3e0b-4d57-9d74-5538edc87aad</groupid>
+    <displayx>45</displayx>
+    <displayy>360</displayy>
+  </stage>
+  <stage stageid="660a775b-6eb0-41fe-82bb-e7f0244c693b" name="Processes" type="Collection">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Name" type="text" description="The name of the process." />
+      <field name="Description" type="text" description="An optional description of the process." />
+      <field name="Published_WS" type="flag" description="Flag indicating whether the process has been published as a SOAP web service." />
+      <field name="WS_Name" type="text" description="If published, the web service name of the process." />
+      <field name="Published_ControlRoom" type="flag" description="Flag indicating whether the process has been published in the Blue Prism Control Room." />
+      <field name="Type" type="text" description="The type of entity (either Process or Object)" />
+    </collectioninfo>
+    <displayx>-195</displayx>
+    <displayy>285</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="551604aa-481f-423f-bced-536280553469" name="Copy Details to Processes" type="MultipleCalculation">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>affaece2-43ea-43f7-8f5a-0e1f36f661a1</onsuccess>
+    <steps>
+      <calculation expression="[Results.Process_Name]" stage="Processes.Name" />
+      <calculation expression="[Results.Process_Description]" stage="Processes.Description" />
+      <calculation expression="[Results.Attribute_ID] = 4 OR [Results.Attribute_ID] = 6" stage="Processes.Published_WS" />
+      <calculation expression="[Results.Attribute_ID] = 2 OR [Results.Attribute_ID] = 6" stage="Processes.Published_ControlRoom" />
+      <calculation expression="[Results.Type]" stage="Processes.Type" />
+    </steps>
+    <displayx>45</displayx>
+    <displayy>210</displayy>
+    <displaywidth>90</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="affaece2-43ea-43f7-8f5a-0e1f36f661a1" name="Published WS?" type="Decision">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <decision expression="[Results.Attribute_ID] = 4 OR [Results.Attribute_ID] = 6" />
+    <ontrue>cbffc194-3dc2-4739-95e9-eea215370234</ontrue>
+    <onfalse>e62d5d15-fc0a-4979-9d54-7c593d14bf9e</onfalse>
+    <displayx>45</displayx>
+    <displayy>270</displayy>
+  </stage>
+  <stage stageid="cbffc194-3dc2-4739-95e9-eea215370234" name="Set WS Name" type="Calculation">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>b484ba86-8d99-4f51-a97f-8728283829c6</onsuccess>
+    <calculation expression="[Results.WS_Name]" stage="Processes.WS_Name" />
+    <displayx>45</displayx>
+    <displayy>315</displayy>
+  </stage>
+  <stage stageid="e62d5d15-fc0a-4979-9d54-7c593d14bf9e" name="Anchor3" type="Anchor">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>651de23c-72a4-48b5-abac-82b2d7446b68</onsuccess>
+    <displayx>120</displayx>
+    <displayy>270</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="651de23c-72a4-48b5-abac-82b2d7446b68" name="Anchor4" type="Anchor">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>b484ba86-8d99-4f51-a97f-8728283829c6</onsuccess>
+    <displayx>120</displayx>
+    <displayy>360</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="3ce521f1-0d87-4ae3-a614-70f05fc8dbc6" name="Add Row" type="Action">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="Collection Name" friendlyname="Collection Name" narrative="The name of the collection to act upon" expr="&quot;Processes&quot;" />
+    </inputs>
+    <onsuccess>551604aa-481f-423f-bced-536280553469</onsuccess>
+    <resource object="Blueprism.AutomateProcessCore.clsCollectionActions" action="Add Row" />
+    <displayx>45</displayx>
+    <displayy>150</displayy>
+  </stage>
+  <stage stageid="d3b366e4-d302-4249-9b2a-1d86dbcd8f57" name="Output" type="Block">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="CCFFCC" />
+    <displayx>-285</displayx>
+    <displayy>255</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="48d0966a-62e4-4f30-a509-6c0bbcdbc6ca" name="Parameters" type="Collection">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Name" type="text" description="The name of the parameter." />
+      <field name="Type" type="text" description="The data type of the parameter." />
+      <field name="Direction" type="text" description="A string indicating whether the parameter is an INPUT or OUTPUT parameter." />
+    </collectioninfo>
+    <displayx>-225</displayx>
+    <displayy>210</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="e5b56099-720d-4473-8db7-c2997e5de96e" name="#Get Parameters from Process XML" type="SubSheet">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" narrative="The XML-encoded process definition." expr="[Results.Process_XML]" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Parameters" friendlyname="Parameters" narrative="Collection containing any Input/Output parameters defined on the processes Main page." stage="Parameters" />
+      <output type="flag" name="Success" friendlyname="Success" narrative="A flag indicating whether the method was able to successfully parse the process XML. This does not mean that parameters were found, only that no exceptions were encountered while parsing the XML." stage="Success" />
+    </outputs>
+    <onsuccess>0941c646-7bdf-4599-a43e-1df632d9eff5</onsuccess>
+    <processid>0106fe52-e84d-4777-aa3e-a1c255f25c01</processid>
+    <displayx>15</displayx>
+    <displayy>135</displayy>
+    <displaywidth>90</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="fe38a290-0e5a-4df3-9315-490ab0de1662" name="End" type="End">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <outputs>
+      <output type="collection" name="Parameters" narrative="Collection containing any Input/Output parameters defined on the processes Main page." stage="Parameters" />
+      <output type="flag" name="Success" narrative="A flag indicating whether the method was able to successfully parse the process XML. This does not mean that parameters were found, only that no exceptions were encountered while parsing the XML." stage="Success" />
+    </outputs>
+    <displayx>225</displayx>
+    <displayy>435</displayy>
+  </stage>
+  <stage stageid="044a556b-5128-4911-9179-f153b2189598" name="Process XML" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="521e30fa-405e-4364-a243-a060a007ae04" name="Get Input Elements" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" narrative="The XML containing the elements you are interested in." expr="[Process XML]" />
+      <input type="text" name="XPath" friendlyname="XPath" narrative="The XPath query to use for searching the XML." expr="[Inputs XPath]" />
+      <input type="collection" name="Namespaces" friendlyname="Namespaces" narrative="A collection containing the definitions of any namespaces used in the XML. The collection must contain the text columns &quot;prefix&quot; and &quot;uri&quot;." expr="" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Elements" friendlyname="Elements" narrative="A collection containing the elements that matched the input XPath query for the specified XML." stage="Elements" />
+    </outputs>
+    <onsuccess>a2c28d9d-b444-4471-8b49-58923bfc06d7</onsuccess>
+    <resource object="Utility - XML" action="Get Elements By XPath" />
+    <displayx>15</displayx>
+    <displayy>-60</displayy>
+  </stage>
+  <stage stageid="727f9bc9-82cd-40c7-a93f-1f3f32d15e0a" name="Elements" type="Collection">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Name" type="text" />
+      <field name="Value" type="text" />
+      <field name="Inner XML" type="text" />
+      <field name="Outer XML" type="text" />
+    </collectioninfo>
+    <displayx>-195</displayx>
+    <displayy>180</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="9e4535a1-5242-41fa-a5cd-fb0b1a0e25f6" name="Inputs XPath" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <narrative>XPath statement for locating any defined input parameters on the processes Main page.</narrative>
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">/process/stage[@type='Start']/inputs/input</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>60</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="a2c28d9d-b444-4471-8b49-58923bfc06d7" name="Loop Start1" type="LoopStart">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>ed8fe20e-b6d5-422b-a467-55707f5e7511</onsuccess>
+    <groupid>25953d45-8705-41ce-bc88-3efe241100af</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Elements</loopdata>
+    <displayx>15</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="93ae96b4-a657-4007-bbd3-893803f01bae" name="Loop End1" type="LoopEnd">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>93bc49bf-4c6b-4a4f-9834-0bce4f04c1f7</onsuccess>
+    <groupid>25953d45-8705-41ce-bc88-3efe241100af</groupid>
+    <displayx>15</displayx>
+    <displayy>285</displayy>
+  </stage>
+  <stage stageid="ce64afe4-a782-48a4-bfb9-3cd486117192" name="Get Name" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" expr="[Elements.Outer XML]" />
+      <input type="text" name="Attribute Name" friendlyname="Attribute Name" expr="&quot;name&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Value" friendlyname="Value" stage="Parameter Name" />
+    </outputs>
+    <onsuccess>9c2bcbd6-1e02-4592-a25c-a17d15453b26</onsuccess>
+    <resource object="Utility - XML" action="Get Attribute" />
+    <displayx>15</displayx>
+    <displayy>105</displayy>
+  </stage>
+  <stage stageid="2b0ab29a-fc3e-4136-8aeb-fa8b1fa07e26" name="Parameter Name" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>120</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="7fe5bb0a-d902-4f97-bcc1-1d0b9e9ae01e" name="Parameter Type" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>150</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="9c2bcbd6-1e02-4592-a25c-a17d15453b26" name="Get Type" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" expr="[Elements.Outer XML]" />
+      <input type="text" name="Attribute Name" friendlyname="Attribute Name" expr="&quot;type&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Value" friendlyname="Value" stage="Parameter Type" />
+    </outputs>
+    <onsuccess>33ad7daa-00be-4b0b-b6b7-053ab8426757</onsuccess>
+    <resource object="Utility - XML" action="Get Attribute" />
+    <displayx>15</displayx>
+    <displayy>150</displayy>
+  </stage>
+  <stage stageid="96566029-9449-406c-bc56-b12cd9efd842" name="Parameters" type="Collection">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <collectioninfo>
+      <field name="Name" type="text" description="The parameter name." />
+      <field name="Type" type="text" description="The prameter data type." />
+      <field name="Direction" type="text" description="Input or output parameter." />
+    </collectioninfo>
+    <displayx>-195</displayx>
+    <displayy>255</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="33ad7daa-00be-4b0b-b6b7-053ab8426757" name="Add Row" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="Collection Name" friendlyname="Collection Name" narrative="The name of the collection to act upon" expr="&quot;Parameters&quot;" />
+    </inputs>
+    <onsuccess>bdca2d69-d886-4f5a-bc26-c5149aefcca3</onsuccess>
+    <resource object="Blueprism.AutomateProcessCore.clsCollectionActions" action="Add Row" />
+    <displayx>15</displayx>
+    <displayy>195</displayy>
+  </stage>
+  <stage stageid="bdca2d69-d886-4f5a-bc26-c5149aefcca3" name="Add Values" type="MultipleCalculation">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>93ae96b4-a657-4007-bbd3-893803f01bae</onsuccess>
+    <steps>
+      <calculation expression="[Parameter Name]" stage="Parameters.Name" />
+      <calculation expression="[Parameter Type]" stage="Parameters.Type" />
+      <calculation expression="&quot;INPUT&quot;" stage="Parameters.Direction" />
+    </steps>
+    <displayx>15</displayx>
+    <displayy>240</displayy>
+  </stage>
+  <stage stageid="809bba07-2d67-4c80-8f64-f2891ecbcc85" name="Outputs XPath" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <narrative>XPath statement for locating any defined output parameters on the processes Main page.</narrative>
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">/process/stage[@type='End']/outputs/output</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>90</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="995e51d7-518a-472d-b289-4c659a8c8a1d" name="Get Inputs" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <font family="Segoe UI" size="10" style="Regular" color="00CCFF" />
+    <displayx>-45</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>330</displayheight>
+  </stage>
+  <stage stageid="f3130c7e-387c-4706-b1fe-17dcb70cf707" name="Get Outputs" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <font family="Segoe UI" size="10" style="Regular" color="00CCFF" />
+    <displayx>165</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>375</displayheight>
+  </stage>
+  <stage stageid="308d18b2-c95d-4114-bba6-fd5322060027" name="Get Output Elements" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" narrative="The XML containing the elements you are interested in." expr="[Process XML]" />
+      <input type="text" name="XPath" friendlyname="XPath" narrative="The XPath query to use for searching the XML." expr="[Outputs XPath]" />
+      <input type="collection" name="Namespaces" friendlyname="Namespaces" narrative="A collection containing the definitions of any namespaces used in the XML. The collection must contain the text columns &quot;prefix&quot; and &quot;uri&quot;." expr="" />
+    </inputs>
+    <outputs>
+      <output type="collection" name="Elements" friendlyname="Elements" narrative="A collection containing the elements that matched the input XPath query for the specified XML." stage="Elements" />
+    </outputs>
+    <onsuccess>80de32f8-b853-44d7-9748-e3c987bfe792</onsuccess>
+    <resource object="Utility - XML" action="Get Elements By XPath" />
+    <displayx>225</displayx>
+    <displayy>15</displayy>
+  </stage>
+  <stage stageid="80de32f8-b853-44d7-9748-e3c987bfe792" name="Loop Start1" type="LoopStart">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>a787550a-f742-4a93-a7e5-9721514fd694</onsuccess>
+    <groupid>74743b17-45d9-46fb-9896-31fd981f958e</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Elements</loopdata>
+    <displayx>225</displayx>
+    <displayy>60</displayy>
+  </stage>
+  <stage stageid="0eac2e61-7db0-4dff-98cc-f30277875a5c" name="Loop End1" type="LoopEnd">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>9d0f6fcd-85e4-47be-80ed-1c8899df0470</onsuccess>
+    <groupid>74743b17-45d9-46fb-9896-31fd981f958e</groupid>
+    <displayx>225</displayx>
+    <displayy>330</displayy>
+  </stage>
+  <stage stageid="84340792-df3b-4000-b7d2-9e017e4fc817" name="Get Name" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" expr="[Elements.Outer XML]" />
+      <input type="text" name="Attribute Name" friendlyname="Attribute Name" expr="&quot;name&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Value" friendlyname="Value" stage="Parameter Name" />
+    </outputs>
+    <onsuccess>c2e2da0b-fef6-4931-ab08-b815a340df8c</onsuccess>
+    <resource object="Utility - XML" action="Get Attribute" />
+    <displayx>225</displayx>
+    <displayy>150</displayy>
+  </stage>
+  <stage stageid="c2e2da0b-fef6-4931-ab08-b815a340df8c" name="Get Type" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="XML" friendlyname="XML" expr="[Elements.Outer XML]" />
+      <input type="text" name="Attribute Name" friendlyname="Attribute Name" expr="&quot;type&quot;" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Value" friendlyname="Value" stage="Parameter Type" />
+    </outputs>
+    <onsuccess>01048899-9ba1-4261-a3e0-d6608a814a4c</onsuccess>
+    <resource object="Utility - XML" action="Get Attribute" />
+    <displayx>225</displayx>
+    <displayy>195</displayy>
+  </stage>
+  <stage stageid="01048899-9ba1-4261-a3e0-d6608a814a4c" name="Add Row" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="Collection Name" friendlyname="Collection Name" narrative="The name of the collection to act upon" expr="&quot;Parameters&quot;" />
+    </inputs>
+    <onsuccess>c646860d-9073-4337-8bd0-bce299051b41</onsuccess>
+    <resource object="Blueprism.AutomateProcessCore.clsCollectionActions" action="Add Row" />
+    <displayx>225</displayx>
+    <displayy>240</displayy>
+  </stage>
+  <stage stageid="c646860d-9073-4337-8bd0-bce299051b41" name="Add Values" type="MultipleCalculation">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>0eac2e61-7db0-4dff-98cc-f30277875a5c</onsuccess>
+    <steps>
+      <calculation expression="[Parameter Name]" stage="Parameters.Name" />
+      <calculation expression="[Parameter Type]" stage="Parameters.Type" />
+      <calculation expression="&quot;OUTPUT&quot;" stage="Parameters.Direction" />
+    </steps>
+    <displayx>225</displayx>
+    <displayy>285</displayy>
+  </stage>
+  <stage stageid="ed8fe20e-b6d5-422b-a467-55707f5e7511" name="Reset" type="MultipleCalculation">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>ce64afe4-a782-48a4-bfb9-3cd486117192</onsuccess>
+    <steps>
+      <calculation expression="&quot;&quot;" stage="Parameter Name" />
+      <calculation expression="&quot;&quot;" stage="Parameter Type" />
+    </steps>
+    <displayx>15</displayx>
+    <displayy>60</displayy>
+  </stage>
+  <stage stageid="a787550a-f742-4a93-a7e5-9721514fd694" name="Reset" type="MultipleCalculation">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>84340792-df3b-4000-b7d2-9e017e4fc817</onsuccess>
+    <steps>
+      <calculation expression="&quot;&quot;" stage="Parameter Name" />
+      <calculation expression="&quot;&quot;" stage="Parameter Type" />
+    </steps>
+    <displayx>225</displayx>
+    <displayy>105</displayy>
+  </stage>
+  <stage stageid="93bc49bf-4c6b-4a4f-9834-0bce4f04c1f7" name="Anchor1" type="Anchor">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>9c0b6803-c46e-4681-8391-c0957fedfce5</onsuccess>
+    <displayx>120</displayx>
+    <displayy>285</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="ab4f2ab0-d017-4f1d-b9b1-4cb51b121b32" name="Anchor2" type="Anchor">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <onsuccess>308d18b2-c95d-4114-bba6-fd5322060027</onsuccess>
+    <displayx>120</displayx>
+    <displayy>15</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="9c0b6803-c46e-4681-8391-c0957fedfce5" name="Clear Collection" type="Action">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="Collection Name" friendlyname="Collection Name" narrative="The name of the collection to act upon" expr="&quot;Elements&quot;" />
+    </inputs>
+    <onsuccess>ab4f2ab0-d017-4f1d-b9b1-4cb51b121b32</onsuccess>
+    <resource object="Blueprism.AutomateProcessCore.clsCollectionActions" action="Remove All Rows" />
+    <displayx>120</displayx>
+    <displayy>150</displayy>
+  </stage>
+  <stage stageid="54f71fe2-33de-40ad-a9d2-96cf3284b307" name="Input" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="81af7dbe-f85e-45c0-bd23-86d0c203efdd" name="Local" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>30</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>180</displayheight>
+  </stage>
+  <stage stageid="c23d4430-b1e1-401e-bb2f-6f287f8e72dd" name="Output" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>225</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="327e3204-856d-434c-9bdb-3ae5ee14c847" name="Block4" type="Block">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-45</displayx>
+    <displayy>-90</displayy>
+    <displaywidth>195</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="1aa1a0b9-477c-4c1d-a8b8-06cf3023a5a5" name="Recover4" type="Recover">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <onsuccess>e058766b-f0f4-4e2f-9449-f3a43667a439</onsuccess>
+    <displayx>105</displayx>
+    <displayy>-60</displayy>
+  </stage>
+  <stage stageid="e058766b-f0f4-4e2f-9449-f3a43667a439" name="Resume4" type="Resume">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <onsuccess>dd26eefa-f5f7-4530-b08f-29c34bca25c6</onsuccess>
+    <displayx>225</displayx>
+    <displayy>-60</displayy>
+  </stage>
+  <stage stageid="dd26eefa-f5f7-4530-b08f-29c34bca25c6" name="Anchor5" type="Anchor">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <onsuccess>4a0c8ad1-1173-477b-a314-aa59021513b2</onsuccess>
+    <displayx>315</displayx>
+    <displayy>-60</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="4a0c8ad1-1173-477b-a314-aa59021513b2" name="Anchor6" type="Anchor">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <onsuccess>fe38a290-0e5a-4df3-9315-490ab0de1662</onsuccess>
+    <displayx>315</displayx>
+    <displayy>435</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="99061ff2-0ad8-4630-9714-97fb98496ab0" name="Note4" type="Note">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <narrative>If anything in this flow is going to fail it will be the initial read of the XML. If that fails, we'll simply exit.</narrative>
+    <font family="Segoe UI" size="10" style="Regular" color="0000FF" />
+    <displayx>390</displayx>
+    <displayy>-60</displayy>
+    <displaywidth>120</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="50622315-434f-4712-a157-6b7f394c5294" name="Success" type="Data">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <narrative>Flag indicating whether the method was able to successfully complete, regardless of whether it found any parameters.</narrative>
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>285</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="9d0f6fcd-85e4-47be-80ed-1c8899df0470" name="Set Success" type="Calculation">
+    <subsheetid>0106fe52-e84d-4777-aa3e-a1c255f25c01</subsheetid>
+    <loginhibit />
+    <onsuccess>fe38a290-0e5a-4df3-9315-490ab0de1662</onsuccess>
+    <calculation expression="True" stage="Success" />
+    <displayx>225</displayx>
+    <displayy>390</displayy>
+  </stage>
+  <stage stageid="75e31ee5-94a9-4bca-8670-8041cf1934e2" name="Output" type="Block">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="CCFFCC" />
+    <displayx>-315</displayx>
+    <displayy>180</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="9a47835f-4d2e-40ef-b8f8-4da06105e5c7" name="Success?" type="Decision">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <decision expression="[Success] = True" />
+    <ontrue>e5b56099-720d-4473-8db7-c2997e5de96e</ontrue>
+    <onfalse>c0b78f97-e96b-4639-a530-cd946d7c6469</onfalse>
+    <displayx>15</displayx>
+    <displayy>75</displayy>
+  </stage>
+  <stage stageid="0941c646-7bdf-4599-a43e-1df632d9eff5" name="Success?" type="Decision">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <decision expression="[Success] = True" />
+    <ontrue>0ae4f56c-23f2-4e17-9a5b-9ce3a89c1f18</ontrue>
+    <onfalse>f2bbce6a-525e-4c61-a168-5d8d6da62328</onfalse>
+    <displayx>15</displayx>
+    <displayy>195</displayy>
+  </stage>
+  <stage stageid="f2bbce6a-525e-4c61-a168-5d8d6da62328" name="XML Parsing Exception" type="Exception">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <exception localized="yes" type="System Exception" detail="&quot;An error was encountered while trying to parse the XML-encoded process definition.&quot;" />
+    <displayx>120</displayx>
+    <displayy>195</displayy>
+  </stage>
+  <stage stageid="c0b78f97-e96b-4639-a530-cd946d7c6469" name="Anchor7" type="Anchor">
+    <subsheetid>052068ef-768b-4e0d-ae03-a200ca01533b</subsheetid>
+    <loginhibit />
+    <onsuccess>62e45399-6b5b-4764-9deb-670ff3c27127</onsuccess>
+    <displayx>-90</displayx>
+    <displayy>75</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="973ab954-3cac-4a60-aa51-aa37a00c5205" name="Get Session Output" type="SubSheetInfo">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <narrative>Use this method to get the output from a specific session of a Blue Prism process.</narrative>
+    <displayx>-195</displayx>
+    <displayy>-105</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>90</displayheight>
+  </stage>
+  <stage stageid="44b083f1-e27a-4b9d-9d13-76a777011ece" name="Start" type="Start">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <preconditions>
+      <condition narrative="You must provide a valid session ID for a completed Blue Prism process." />
+    </preconditions>
+    <inputs>
+      <input type="text" name="SessionID" stage="SessionID" />
+    </inputs>
+    <onsuccess>26e49b3c-62ae-4b7d-8f16-85443878d60b</onsuccess>
+    <displayx>30</displayx>
+    <displayy>-105</displayy>
+  </stage>
+  <stage stageid="6b4e2b91-f594-41a0-85f5-b904a8492c9b" name="SessionID" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>180</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="c794212b-e33f-4655-86fb-b94c8a1cbf24" name="Local Variables" type="Block">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>180</displayheight>
+  </stage>
+  <stage stageid="5ac63456-5d09-4b5a-8614-e4e3f4f78557" name="Output" type="Block">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="CCFFCC" />
+    <displayx>-285</displayx>
+    <displayy>225</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="768d43d8-e406-490f-8f09-583a09652a62" name="Input" type="Block">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FFFF99" />
+    <displayx>-285</displayx>
+    <displayy>150</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="70ff0dbc-cbbb-4496-9980-46d728bdbe45" name="Query" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">SELECT 
+  [b].[attributexml]
+FROM [dbo].[BPASession] AS a 
+JOIN [dbo].[BPASessionLog_NonUnicode] AS b
+  ON [a].[sessionnumber] = [b].[sessionnumber]
+WHERE [b].[stagename]='End'
+AND [a].[sessionid]=</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="d361a2b3-c6b0-4ab0-b5a2-c84877e42649" name="Success" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="d17b7c68-b58d-4b5f-a0cf-29aace3bbcd9" name="Message" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>45</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="94f2329f-a7ef-4b3f-9c5b-0bece24b848c" name="Exception Detail" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>75</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="8ba90cf4-92f6-495f-9414-34874b81bb61" name="End" type="End">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <outputs>
+      <output type="flag" name="Success" narrative="A flag indicating the success or failure of the method." stage="Success" />
+      <output type="text" name="Session Output" narrative="An XML encoded string containing the output of the session." stage="Result" />
+    </outputs>
+    <displayx>30</displayx>
+    <displayy>375</displayy>
+  </stage>
+  <stage stageid="ce095d9c-ca52-4abb-89b0-7e04adf8d54d" name="Get Process Results from DB" type="Action">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="SQL" friendlyname="SQL" narrative="The SQL query to use to perform this action" expr="[Query] &amp; &quot;'&quot; &amp; [SessionID] &amp; &quot;';&quot;" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+      <output type="collection" name="Results" friendlyname="Results" narrative="The collection of results from the query" stage="Results" />
+    </outputs>
+    <onsuccess>d666c1a5-2185-4c20-8bdb-4b4f2abc8cb9</onsuccess>
+    <resource object="Data - SQL Server" action="Get Collection" />
+    <displayx>30</displayx>
+    <displayy>0</displayy>
+    <displaywidth>90</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="6e0c7f95-69c3-427b-8a0c-9274a0d15b95" name="Block3" type="Block">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="FF0000" />
+    <displayx>-30</displayx>
+    <displayy>-30</displayy>
+    <displaywidth>210</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="18d8d1f4-7229-4473-b0e9-c09e963b13a8" name="Recover" type="Recover">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>534aa075-37cf-47a6-b1c5-6afe903c3feb</onsuccess>
+    <displayx>135</displayx>
+    <displayy>0</displayy>
+  </stage>
+  <stage stageid="534aa075-37cf-47a6-b1c5-6afe903c3feb" name="Set DB Exception Detail" type="Calculation">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>5eda0f79-b0f6-4d98-8bfe-fda204c9889b</onsuccess>
+    <calculation expression="&quot;The following exception was encountered while trying to retrieve process results from the database for session '&quot; &amp; [SessionID] &amp; &quot;': &quot; &amp; ExceptionDetail()" stage="Exception Detail" />
+    <displayx>225</displayx>
+    <displayy>0</displayy>
+  </stage>
+  <stage stageid="5eda0f79-b0f6-4d98-8bfe-fda204c9889b" name="Resume3" type="Resume">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>2bb7b06b-6d21-4202-9a05-c4dcf1d829b5</onsuccess>
+    <displayx>300</displayx>
+    <displayy>0</displayy>
+  </stage>
+  <stage stageid="2bb7b06b-6d21-4202-9a05-c4dcf1d829b5" name="Action Exception" type="Exception">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <exception localized="yes" type="Action Failed" detail="[Exception Detail]" />
+    <displayx>375</displayx>
+    <displayy>0</displayy>
+  </stage>
+  <stage stageid="26e49b3c-62ae-4b7d-8f16-85443878d60b" name="Connection Details?" type="Decision">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <decision expression="[Connection Details Set] = True" />
+    <ontrue>ce095d9c-ca52-4abb-89b0-7e04adf8d54d</ontrue>
+    <onfalse>714cace7-20ce-4695-84ef-427a7bae089b</onfalse>
+    <displayx>30</displayx>
+    <displayy>-60</displayy>
+  </stage>
+  <stage stageid="714cace7-20ce-4695-84ef-427a7bae089b" name="Anchor1" type="Anchor">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>a61dd331-31f6-4bc8-8ff8-6ec4df464c0c</onsuccess>
+    <displayx>-75</displayx>
+    <displayy>-60</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="a180467d-94bb-4993-b0b2-1431c48e38ba" name="Anchor2" type="Anchor">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>8ba90cf4-92f6-495f-9414-34874b81bb61</onsuccess>
+    <displayx>-75</displayx>
+    <displayy>375</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="d666c1a5-2185-4c20-8bdb-4b4f2abc8cb9" name="Success?" type="Decision">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <decision expression="[Success]" />
+    <ontrue>57ee2413-3376-4c7a-9d19-156747d10c56</ontrue>
+    <onfalse>a61dd331-31f6-4bc8-8ff8-6ec4df464c0c</onfalse>
+    <displayx>30</displayx>
+    <displayy>60</displayy>
+  </stage>
+  <stage stageid="a61dd331-31f6-4bc8-8ff8-6ec4df464c0c" name="Anchor7" type="Anchor">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>8f70cdd6-a57e-4477-a898-fe4e84cdf2c7</onsuccess>
+    <displayx>-75</displayx>
+    <displayy>60</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="4b029d57-a7c9-45f2-b0d8-2081fda870e0" name="Set Flag" type="Calculation">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <onsuccess>3b824160-3b73-4b72-af30-5b4c31d447d1</onsuccess>
+    <calculation expression="True" stage="Success" />
+    <displayx>45</displayx>
+    <displayy>405</displayy>
+  </stage>
+  <stage stageid="3a83a988-76db-4772-837e-2121c248b940" name="Result" type="Data">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>255</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="56edc80c-6ba9-430c-8998-e217eb8728e3" name="We Have Output?" type="Decision">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <decision expression="Len(Trim([Result])) &gt; 0" />
+    <ontrue>10a2bacd-39a4-4ab9-bab5-5a7b1730fb45</ontrue>
+    <onfalse>8f70cdd6-a57e-4477-a898-fe4e84cdf2c7</onfalse>
+    <displayx>30</displayx>
+    <displayy>285</displayy>
+  </stage>
+  <stage stageid="10a2bacd-39a4-4ab9-bab5-5a7b1730fb45" name="Parse Output XML" type="Calculation">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <narrative>Strip extraneous element tags from the output XML.</narrative>
+    <onsuccess>8ba90cf4-92f6-495f-9414-34874b81bb61</onsuccess>
+    <calculation expression="Mid([Result], InStr([Result], &quot;&lt;outputs&gt;&quot;), (InStr([Result], &quot;&lt;/outputs&gt;&quot;) + 10) - InStr([Result], &quot;&lt;outputs&gt;&quot;))" stage="Result" />
+    <displayx>30</displayx>
+    <displayy>330</displayy>
+  </stage>
+  <stage stageid="8f70cdd6-a57e-4477-a898-fe4e84cdf2c7" name="Anchor8" type="Anchor">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>a180467d-94bb-4993-b0b2-1431c48e38ba</onsuccess>
+    <displayx>-75</displayx>
+    <displayy>285</displayy>
+    <displaywidth>10</displaywidth>
+    <displayheight>10</displayheight>
+  </stage>
+  <stage stageid="e20d4f4c-71a1-4fa4-9e62-a57236f6403c" name="Note5" type="Note">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <narrative>If a process has multiple pages in it and any of those pages End stage has output values, the query we run to collect output will return all of them. We want to limit our response to just the output from the very last End stage which should be that of the Main page.
+
+To do that, we cycle through the collection, basically throwing away everything except the very last entry. Keep in mind, there could be cases where a process has sub pages that return output internally within the process, but the Main page does not. In that case, we don't return anything. </narrative>
+    <font family="Segoe UI" size="10" style="Regular" color="0000FF" />
+    <displayx>195</displayx>
+    <displayy>180</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>180</displayheight>
+  </stage>
+  <stage stageid="93bb2479-e373-460d-8bd6-f74081b3c7af" name="Results" type="Collection">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>105</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="57ee2413-3376-4c7a-9d19-156747d10c56" name="Loop Results" type="LoopStart">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>e3b34fdc-b692-4173-b879-419cd66c23e4</onsuccess>
+    <groupid>db5c9488-a4f1-4367-a7c0-957722b9e4dd</groupid>
+    <looptype>ForEach</looptype>
+    <loopdata>Results</loopdata>
+    <displayx>30</displayx>
+    <displayy>105</displayy>
+  </stage>
+  <stage stageid="ef8a7e6e-8eeb-4b4c-8a55-75d76f04c99c" name="Loop Results" type="LoopEnd">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>56edc80c-6ba9-430c-8998-e217eb8728e3</onsuccess>
+    <groupid>db5c9488-a4f1-4367-a7c0-957722b9e4dd</groupid>
+    <displayx>30</displayx>
+    <displayy>240</displayy>
+  </stage>
+  <stage stageid="e3b34fdc-b692-4173-b879-419cd66c23e4" name="Clear Result" type="Calculation">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>9d8baff9-4531-4834-a7d9-f75177e79ad1</onsuccess>
+    <calculation expression="&quot;&quot;" stage="Result" />
+    <displayx>30</displayx>
+    <displayy>150</displayy>
+  </stage>
+  <stage stageid="9d8baff9-4531-4834-a7d9-f75177e79ad1" name="Get Session Output" type="Calculation">
+    <subsheetid>4dcf98e3-415a-4731-aa76-527973175466</subsheetid>
+    <loginhibit />
+    <onsuccess>ef8a7e6e-8eeb-4b4c-8a55-75d76f04c99c</onsuccess>
+    <calculation expression="[Results.attributexml]" stage="Result" />
+    <displayx>30</displayx>
+    <displayy>195</displayy>
+  </stage>
+  <stage stageid="6083e799-053b-456c-a7c2-efda1804d02a" name="Query Including Objects" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">SELECT 
+[name] AS Process_Name, 
+[description] AS Process_Description, 
+[AttributeID] AS Attribute_ID, 
+[wspublishname] AS WS_Name,
+CASE WHEN [ProcessType] = 'P' THEN 'Process' ELSE 'Object' END AS Type
+FROM [dbo].[BPAProcess]</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>90</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="5d513640-b6df-4a3e-8657-a5c0913d5ad4" name="Include Objects in Query?" type="Decision">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <narrative>Determine if Objects should be included in the SQL query results.</narrative>
+    <decision expression="[Include Objects]" />
+    <ontrue>42398985-9376-4498-8483-d3489e510772</ontrue>
+    <onfalse>3320d398-c705-4a2c-a6cb-eb2c6b339e3f</onfalse>
+    <displayx>45</displayx>
+    <displayy>-15</displayy>
+  </stage>
+  <stage stageid="7e61524c-03cc-4abf-9d3f-d21f67120e47" name="Include Objects" type="Data">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <narrative>Flag indicating whether objects should be included in the set of results. If True, objects will be included. Default value: False</narrative>
+    <datatype>flag</datatype>
+    <initialvalue>False</initialvalue>
+    <private />
+    <alwaysinit />
+    <displayx>-195</displayx>
+    <displayy>-15</displayy>
+    <displaywidth>150</displaywidth>
+    <displayheight>30</displayheight>
+  </stage>
+  <stage stageid="42398985-9376-4498-8483-d3489e510772" name="Get Process Info from DB Include Objects" type="Action">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit onsuccess="true" />
+    <inputs>
+      <input type="text" name="SQL" friendlyname="SQL" narrative="The SQL query to use to perform this action" expr="[Query Including Objects]" />
+    </inputs>
+    <outputs>
+      <output type="flag" name="Success" friendlyname="Success" narrative="Flag indicating success (True) or failure (False)" stage="Success" />
+      <output type="text" name="Message" friendlyname="Message" narrative="Error message giving detail regarding why this action failed" stage="Message" />
+      <output type="collection" name="Results" friendlyname="Results" narrative="The collection of results from the query" stage="Results" />
+    </outputs>
+    <onsuccess>967e1be7-8d90-4159-8466-dfeb818fee52</onsuccess>
+    <resource object="Data - SQL Server" action="Get Collection" />
+    <displayx>75</displayx>
+    <displayy>45</displayy>
+  </stage>
+  <stage stageid="3faa1b2a-3c3d-414b-81b1-dcc8bbc0a47d" name="Input Variables" type="Block">
+    <subsheetid>64f05c58-9310-49c4-9718-dc5e8c8a2699</subsheetid>
+    <loginhibit />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+    <displayx>-285</displayx>
+    <displayy>-45</displayy>
+    <displaywidth>180</displaywidth>
+    <displayheight>60</displayheight>
+  </stage>
+  <stage stageid="97cc3ede-5df4-46cf-ac11-40e8189106b8" name="Note2" type="Note">
+    <narrative>‘The MIT License’
+
+© 2020 Blue Prism Limited
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+</narrative>
+    <font family="Segoe UI" size="10" style="Regular" color="0000FF" />
+    <displayx>435</displayx>
+    <displayy>0</displayy>
+    <displaywidth>300</displaywidth>
+    <displayheight>270</displayheight>
+  </stage>
+</process>
